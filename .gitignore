@@ -1,0 +1,21 @@
+# React and Node
+node_modules/
+build/
+dist/
+.env
+
+# Firebase
+firebase-debug.log
+firebase.json
+.firebaserc
+
+# OS
+.DS_Store
+
+# IDEs
+.vscode/
+.idea/
+
+# Logs
+*.log
+
