@@ -61,3 +61,7 @@ This web app will help users find movies based on the mood. User can track wacth
 3. TMDb API is queried to get matching movies.
 4. All saved data is stored in Firebase Firestore under the logged-in user's ID.
 5. When the user accesses the app from another device, their data is retrieved and synced automatically.
+
+### Wireframes and Design
+Link to Figma file
+https://www.figma.com/design/1HXbPNBG8D6cMEVGdBaZ2W/Mood-base-movie-generator?node-id=0-1&t=jzaUt4gRnZxRq3GI-1
