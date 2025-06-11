@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import { getRandomMovieFromPopular } from './services/tmdb';
-import './App.css'
+import { getRandomMovieFromPopular } from '../services/tmdb';
+import MovieCard from '../components/MovieCard';
 
-function App() {
+
+function RandomMovie() {
   const [movie, setMovie] = useState(null);
 
   async function handleClick() {

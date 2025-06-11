@@ -7,7 +7,7 @@ import Profile from './pages/Profile';
 
 function App() {
   return (
-    <Routes>
+      <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/random" element={<RandomMovie />} />
       <Route path="/movie/:id" element={<MovieDetails />} />
@@ -17,4 +17,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
