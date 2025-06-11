@@ -1,0 +1,27 @@
+.movie-card {
+    background: white;
+    color: white;
+    border-radius: 12px;
+    padding: 16px;
+    width: 300px;
+    margin: 20px auto;
+  }
+  
+  .movie-poster {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+  }
+  
+  .movie-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: black;
+  }
+  
+  .movie-overview {
+    font-size: 14px;
+    color: black;
+    margin-top: 10px;
+  }
+  
