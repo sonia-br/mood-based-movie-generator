@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { getRandomMovieFromPopular } from './services/tmdb';
+import MovieCard from './components/MovieCard';
 import './App.css'
 
 function App() {
@@ -9,29 +10,13 @@ function App() {
     const movie = await getRandomMovieFromPopular();
     setMovie(movie);
   }
-  let movieBlock;
-
-  if (movie) {
-    movieBlock = (
-      <div style={{ marginTop: '20px' }}>
-        <h2>{movie.title}</h2>
-        <img
-          src={'https://image.tmdb.org/t/p/w300' + movie.poster_path}
-          alt={movie.title}
-        />
-        <p>{movie.overview}</p>
-      </div>
-    );
-  }
 
   return (
     <div>
-      <h1>Mood-Based Movie Generator</h1>
+      {!movie && <h1>Mood-Based Movie Generator</h1>}
 
+      {movie && <MovieCard movie={movie} />}
       <button onClick={handleClick}>Generate random movie</button>
-
-      {/* Show movieBlock only if movie is not null */}
-      {movieBlock}
     </div>
   );
 }
