@@ -1,0 +1,9 @@
+.slider
+{
+    margin-bottom: 20px;
+}
+.slider__title
+{
+    display: flex;
+    justify-content: space-between;
+}
