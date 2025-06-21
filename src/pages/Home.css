@@ -2,11 +2,11 @@
 {
     margin: 30px auto;
     padding: 20px;
-    min-width: 600px;
+    max-width: 600px;
 }
 .content__buttons
 {
     display: flex;
     justify-content: space-evenly;
-    min-width: 600px;
+    max-width: 600px;
 }

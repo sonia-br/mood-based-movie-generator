@@ -24,4 +24,14 @@
     color: black;
     margin-top: 10px;
   }
-  
+  .match-label
+  {
+    background-color: blue;
+    color: white;
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }

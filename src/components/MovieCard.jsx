@@ -1,6 +1,6 @@
 import './MovieCard.css';
 
-export default function MovieCard({ movie }) {
+export default function MovieCard({ movie, matchLabel }) {
   if (!movie) return null;
 
   return (
@@ -10,6 +10,9 @@ export default function MovieCard({ movie }) {
         src={'https://image.tmdb.org/t/p/w300' + movie.poster_path}
         alt={movie.title}
       />
+      {matchLabel && (
+        <div className="match-label">{matchLabel}</div>
+      )}
       <h2 className="movie-title">{movie.title}</h2>
       <h3 className="movie-title">{movie.raiting}</h3>
       <p className="movie-overview">{movie.overview}</p>

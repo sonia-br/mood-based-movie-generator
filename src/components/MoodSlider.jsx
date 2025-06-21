@@ -15,9 +15,13 @@ function MoodSlider(props)
 
     return(
         <div className="slider">
-            <label htmlFor={props.moodName}>
-                {props.labelLeft} ({value}) {props.labelRight}
-            </label>
+            {/* <label htmlFor={props.moodName}>
+                {props.labelLeft} {props.labelRight}
+            </label> */}
+            <div className="slider__title">
+                <span>{props.labelLeft}</span>
+                <span>{props.labelRight}</span>
+            </div>
             <br />
             <input
                 id={props.moodName}
@@ -27,10 +31,7 @@ function MoodSlider(props)
                 step="1"
                 value={value}
                 onChange={handleChange}/>
-            <div className="slider__title">
-                <span>{props.labelLeft}</span>
-                <span>{props.labelRight}</span>
-            </div>
+            
         </div>
     );
 }
