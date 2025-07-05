@@ -1,5 +1,7 @@
 # Mood based movie recommendation tool with random movie generator and movie tracker
 
+This project was originally hosted on GitHub  (https://github.com/sonia-br/mood-based-movie-generator)
+
 ## Description
 This web app will help users find movies based on the mood. User can track wacthed films, write reviws or add comments, add films to watch-later list and share them with friends.
 
