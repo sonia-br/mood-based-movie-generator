@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import { getMovieDetailsById } from '../services/tmdb';
+import { addMovieToWatchLater, addMovieToWatched } from '../services/firestoreService';
 
 function MovieDetails() {
     const { id } = useParams();
@@ -60,14 +61,20 @@ function MovieDetails() {
 
     function handleAddtoWatchList()
     {
-        // add to list, button state clicked
-        console.log("Added to watch later"); 
+        // add authentication when not logged in
+        // need to pass userId
+        
+        addMovieToWatchLater();
+        //console.log("Added to watch later");
     }
 
     function handleAddtoWatchedList()
     {
-        // add to list, button state clicked
-        console.log("Added to watched");
+        // add authentication when not logged in
+        // need to pass userId
+
+        addMovieToWatched();
+        //console.log("Added to watched");
     }
 
     return (
