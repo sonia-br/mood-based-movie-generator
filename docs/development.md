@@ -104,10 +104,11 @@ This document includes all development steps i took when working on this project
 - decided to not take movie details from the passed object and fetch them again by id from tmdb
 
 
-## 08-07-2025 - User profile, lists
+## 06-07-2025 - User profile, lists
 For user authentication and deployment of the app I decided to use Firebase
 - installed Firebase
 - set up Firebase profile with google
 - created Firebase authentication and database thorugh graphic interface
 - created service files to connect to firebase, add movies to two lists, get movies from the lists
 
+- added configurations to deploy with Firebase from dev branch
