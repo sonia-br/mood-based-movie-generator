@@ -82,6 +82,8 @@ This document includes all development steps i took when working on this project
 - mirrored GitHub repo to GitLab
 
 ## 06-07-2025 - Movie details page
+- merged a copy of feature/mood-based-search to dev
+- created a new branch feature/movie-page
 - added Link to the image in the movie card, so that when user click the poster he is sent to a movie page
 - implemented movie page
 - movie page displays:
