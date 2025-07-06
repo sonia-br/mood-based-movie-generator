@@ -80,3 +80,23 @@ This document includes all development steps i took when working on this project
 
 ## 05-07-2025 - Switching to GitLab
 - mirrored GitHub repo to GitLab
+
+## 06-07-2025 - Movie details page
+- added Link to the image in the movie card, so that when user click the poster he is sent to a movie page
+- implemented movie page
+- movie page displays:
+    - poster, movie title
+    - movie genres
+    - movie score, intially wanted to use reliable Imdb score, but used 'vote_average' score bu tmdb for now
+    - description
+    - buttons
+        - add to watch later
+        - add to watched 
+- added a function to tmdb to fetch a movie by id
+
+### Issue:
+- movie details were displayed correctle, but genres were missing
+- used passed movie details, from the search page, however they dont contain move genres
+- also used function to fetch by id in case passsed movie is null or undefined
+### Solution:
+- decided to not take movie details from the passed object and fetch them again by id from tmdb

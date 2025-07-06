@@ -5,7 +5,7 @@ export async function getRandomMovieFromPopular()
 {
     const randomPage = Math.floor((Math.random() * 10) + 1);
 
-    const url = `${BASE_URL}/movie/popular?api_key=${API_KEY}&page=${randomPage}`;
+    const url = `${BASE_URL}/movie/popular?api_key=${API_KEY}&page=${randomPage}`
 
     try
     {
@@ -48,4 +48,21 @@ export async function getPopularMovies()
         return null;
     }
 
+}
+
+export async function getMovieDetailsById(id)
+{
+    const url = `${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=en-US`;
+
+    try 
+    {
+        const response = await fetch(url);
+        const movieDetails = await response.json();
+        return movieDetails
+    }
+    catch (error)
+    {
+        console.error('Error - fetching movie details by ID', error);
+        return null;
+    }
 }
