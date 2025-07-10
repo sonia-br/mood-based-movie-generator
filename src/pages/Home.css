@@ -1,0 +1,12 @@
+.mood-sliders
+{
+    margin: 30px auto;
+    padding: 20px;
+    max-width: 600px;
+}
+.content__buttons
+{
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 600px;
+}
