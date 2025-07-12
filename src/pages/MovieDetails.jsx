@@ -1,11 +1,15 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import { getMovieDetailsById } from '../services/tmdb';
-import { addMovieToWatchLater, addMovieToWatched } from '../services/firestoreService';
+import { addMovieToWatchLater, addMovieToWatched, deleteMovieFromList } from '../services/firestoreService';
+import { onAuthStateChanged } from 'firebase/auth';
+import { getDoc, doc } from 'firebase/firestore';
+import { auth, db } from '../services/firebase';
 
 function MovieDetails() {
     const { id } = useParams();
+    const navigate = useNavigate();
 
     // const location = useLocation();
     
@@ -17,6 +21,9 @@ function MovieDetails() {
     // const [movie, setMovie] = useState(initialMovie); // stores passed movie
 
     const [movie, setMovie] = useState(null);
+    const [user, setUser] = useState();
+    const [inWatchLater, setInWatchLater] = useState(false);
+    const [inWatched, setInWatched] = useState(false);
 
     // fetch movie details from tmdb by id, if location.state is null or undefined
     useEffect(() =>
@@ -32,6 +39,34 @@ function MovieDetails() {
         }
         fetchMovie();
     }, [id, movie])
+    
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+        });
+        return () => unsubscribe();
+    }, []); // to subscribe to authentication
+
+    // to check if movie is any fo the lists
+    useEffect(() => {
+        if (user && movie?.id) {
+            const checkMovieInLists = async () => {
+                const watchLaterPath = doc(db, "users", user.uid, "watchLater", String(movie.id));
+                const watchedPath = doc(db, "users", user.uid, "watched", String(movie.id));
+
+                const [watchLaterSnap, watchedSnap] = await Promise.all([
+                    getDoc(watchLaterPath),
+                    getDoc(watchedPath)
+                ]);
+
+                setInWatchLater(watchLaterSnap.exists());
+                setInWatched(watchedSnap.exists());
+            };
+
+            checkMovieInLists();
+        }
+    }, [user, movie]);
+
 
     if (!movie)
     {
@@ -56,26 +91,58 @@ function MovieDetails() {
         movieGenres = <p>Genres are not available</p>
     }
     
-    
+    const handleAddtoWatchList = async () =>{
+        if (!user)
+        {
+            navigate('/auth');
+            return;
+        }
+
+        try
+        {
+            if (inWatchLater)
+            {
+                await deleteMovieFromList(user.uid, "watchLater", movie.id);
+                setInWatchLater(false);
+            }
+            else
+            {
+                await addMovieToWatchLater(user.uid, movie);
+                setInWatchLater(true);
+            }
+        }
+        catch (error)
+        {
+            console.error('Unable to add movie to Watch Later list', error);
+        }
+    };
 
 
-    function handleAddtoWatchList()
-    {
-        // add authentication when not logged in
-        // need to pass userId
-        
-        addMovieToWatchLater();
-        //console.log("Added to watch later");
-    }
+    const handleAddtoWatchedList = async () => {
+        if (!user)
+        {
+            navigate('/auth');
+            return;
+        }
 
-    function handleAddtoWatchedList()
-    {
-        // add authentication when not logged in
-        // need to pass userId
-
-        addMovieToWatched();
-        //console.log("Added to watched");
-    }
+        try
+        {
+            if (inWatched)
+            {
+                await deleteMovieFromList(user.uid, "watched", movie.id);
+                setInWatched(false);
+            }
+            else
+            {
+                await addMovieToWatched(user.uid, movie);
+                setInWatched(true);
+            }
+        }
+        catch (error)
+        {
+            console.error('Unable to add movie to Watched list', error)
+        }
+    };
 
     return (
         <div>
@@ -102,11 +169,11 @@ function MovieDetails() {
             <div className="content__buttons">
     
                 <button  onClick={handleAddtoWatchList}>
-                    Add to watch later
+                    {inWatchLater ? 'Remove from Watch Later' : 'Add to watch later'}
                     </button>
                 
                 <button  onClick={handleAddtoWatchedList}>
-                    Already watched
+                {inWatched ? 'Remove from Watched' : 'Already watched'}
                 </button>
             </div>
         </div>

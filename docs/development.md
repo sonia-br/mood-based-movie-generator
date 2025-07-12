@@ -113,7 +113,7 @@ For user authentication and deployment of the app I decided to use Firebase
 
 - added configurations to deploy with Firebase from dev branch
 
-## 12-07-2025 
+## 12-07-2025 - Authentication feature, Profile page
 - fix import firestoreService file
 - merge feature/profile branch
     - noticed that feature updates were not merged to dev before
@@ -126,3 +126,17 @@ For user authentication and deployment of the app I decided to use Firebase
 - updated App.jsx
     - added route to authentication page, singing out from account, automatically sending user to the profile page after login
     - user cannot go to profile page if they are not logged in
+
+- added profile page
+    - implemented lists - 'Watch Later' and 'Watched'
+    - lists are shown in the profile
+    - to add movie to a list user needs to register or login
+    - switch between two lists by tabs 
+    - when click on movie, user is sent to movie details page
+- updated MovieDetails page
+    - used useEffect:
+        - to subscribe to authentication so that unathenticated user is sent to athentication page when button 'add to a list' is clicked
+        - to check if the film is in a list already
+    - updated functions that allow to add films to lists or delete from lists
+
+- UI is simple and does not have styles, I plan to add styles later, now focused on logic and features
