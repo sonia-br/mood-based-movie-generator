@@ -4,16 +4,15 @@ import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig =
 {
-    apiKey: "AIzaSyAtsYcMD_Of_IxGYLiMOqwdB_tiSO6TDYM",
-  authDomain: "mood-based-movie-generator.firebaseapp.com",
-  projectId: "mood-based-movie-generator",
-  storageBucket: "mood-based-movie-generator.firebasestorage.app",
-  messagingSenderId: "10140873947",
-  appId: "1:10140873947:web:c49fab12695e81418988fe"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 }
 
 const app = initializeApp(firebaseConfig);
-
 const auth = getAuth(app);
 const db = getFirestore(app);
 const provider = new GoogleAuthProvider();

@@ -115,3 +115,6 @@ For user authentication and deployment of the app I decided to use Firebase
 
 ## 12-07-2025 
 - fix import firestoreService file
+- merge feature/profile branch
+    - noticed that feature updates were not merged to dev before
+- removed Firebase configurations from source code
