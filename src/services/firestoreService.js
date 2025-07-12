@@ -1,4 +1,4 @@
-import { deleteDoc, doc, setDoc } from "firebase/firestore";
+import { collection, getDocs, deleteDoc, doc, setDoc } from "firebase/firestore";
 import { db } from './firebase';
 
 export async function addMovieToWatchLater(userId, movie)

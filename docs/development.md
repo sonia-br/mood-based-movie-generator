@@ -112,3 +112,6 @@ For user authentication and deployment of the app I decided to use Firebase
 - created service files to connect to firebase, add movies to two lists, get movies from the lists
 
 - added configurations to deploy with Firebase from dev branch
+
+## 12-07-2025 
+- fix import firestoreService file
