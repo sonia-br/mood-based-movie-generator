@@ -118,3 +118,11 @@ For user authentication and deployment of the app I decided to use Firebase
 - merge feature/profile branch
     - noticed that feature updates were not merged to dev before
 - removed Firebase configurations from source code
+
+- added authentication page to register or login
+    - input fields for email and password
+    - button for registration or login
+    - used createUserWithEmailAndPassword and signWithEmailAndPassword from firebase for easier handling of authentication
+- updated App.jsx
+    - added route to authentication page, singing out from account, automatically sending user to the profile page after login
+    - user cannot go to profile page if they are not logged in
